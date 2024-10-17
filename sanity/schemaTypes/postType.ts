@@ -18,12 +18,15 @@ export const postType = defineType({
         source: "title",
       },
     }),
-
     defineField({
       name: "categories",
       type: "array",
       of: [defineArrayMember({ type: "reference", to: { type: "category" } })],
     }),
+    {
+      name: "lesson",
+      type: "number",
+    },
     defineField({
       name: "publishedAt",
       type: "datetime",
