@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { FiChevronDown, FiPlus, FiX } from "react-icons/fi";
-import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -26,7 +25,7 @@ const Navbar = () => {
     {
       item: "Courses",
       subMenu: [
-        { name: "System Design", path: "/" },
+        { name: "System Design", path: "/courses/system-design-interview" },
         { name: "Problem Solving", path: "/" },
         { name: "Java Interview Prep", path: "/" },
         { name: "JavaScript Interview Prep", path: "/" },
@@ -56,10 +55,10 @@ const Navbar = () => {
   ];
 
   return (
-    <header className={`relative z-20 bg-[#2563eb]`}>
-      <nav className="flex justify-between items-center p-6 md:px-12 text-white bg-transparent">
+    <header className={`relative z-20 bg-white border-b`}>
+      <nav className="flex justify-between items-center p-6 md:px-12 text-black bg-transparent">
         {/* Logo */}
-        <div className={`text-2xl font-bold `}>
+        <div className={`text-xl font-semibold `}>
           <Link href="/">InterviewPrepMaster</Link>
         </div>
 
@@ -71,7 +70,7 @@ const Navbar = () => {
                 // Menu item with sub-menu
                 <>
                   <div
-                    className="flex items-center cursor-pointer hover:text-gray-300"
+                    className="flex items-center cursor-pointer hover:text-orange-400"
                     onClick={() => toggleMenu(menu.item)}
                   >
                     <a className={``}>{menu.item}</a>
@@ -110,7 +109,7 @@ const Navbar = () => {
                 // Menu item without sub-menu
                 <Link
                   href={menu.path}
-                  className={`hover:text-gray-300 cursor-pointer `}
+                  className={`hover:text-orange-400 cursor-pointer `}
                 >
                   {menu.item}
                 </Link>
@@ -122,7 +121,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button
-            className="text-white focus:outline-none"
+            className="text-black focus:outline-none"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
