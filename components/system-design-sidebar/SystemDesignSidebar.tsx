@@ -1,7 +1,9 @@
 "use client";
 
+import { fetchLessons } from "@/services/getLessons";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import {
   MdKeyboardDoubleArrowRight,
@@ -9,11 +11,31 @@ import {
 } from "react-icons/md";
 
 const SystemDesignSidebar = () => {
+  const [lessons, setLessons] = useState<any>([]);
+  const [selectedLesson, setSelectedLesson] = useState<any>(null);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    // Fetch the lessons list
+    async function loadLessons() {
+      const lessonsData = await fetchLessons("system-design-interview");
+      setLessons(lessonsData);
+    }
+    loadLessons();
+  }, []);
+
+  console.log(lessons);
   const baseUrl = "/courses/system-design-interview";
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLessonSelect = (lessonSlug: string) => {
+    setSelectedLesson(lessonSlug); // Set the selected lesson's slug
+    router.push(`/courses/system-design-interview/${lessonSlug}`); // Push to a new route (optional)
   };
 
   return (
@@ -45,40 +67,13 @@ const SystemDesignSidebar = () => {
         </div>
 
         <ul className="space-y-2">
-          <li className="cursor-pointer hover:bg-gray-200 p-2">
-            <Link href={`${baseUrl}`}>Overview</Link>
-          </li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">
-            <Link href={`${baseUrl}/ch-1`}>Chapter 1</Link>
-          </li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">
-            <Link href={`${baseUrl}/ch-2`}>Chapter 2</Link>
-          </li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">
-            <Link href={`${baseUrl}/ch-3`}>Chapter 3</Link>
-          </li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 1</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 2</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 3</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 1</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 2</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 3</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 1</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 2</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 3</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 1</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 2</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 3</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 1</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 2</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 3</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 1</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 2</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 3</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 1</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 2</li>
-          <li className="cursor-pointer hover:bg-gray-200 p-2">Chapter 100</li>
-          {/* Add more chapter titles here */}
+          {lessons.map((l: any, index: any) => (
+            <li className="cursor-pointer hover:bg-gray-200 p-2" key={index}>
+              <p onClick={() => handleLessonSelect(l.slug.current)}>
+                {l.title}
+              </p>
+            </li>
+          ))}
         </ul>
       </div>
 

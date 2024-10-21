@@ -1,16 +1,18 @@
+import { fetchPostBySlug } from "@/services/getLessons";
+import { PortableText } from "next-sanity";
 import React from "react";
 
-const page = ({ params }: any) => {
+const page = async ({ params }: any) => {
   const { slug } = params;
   console.log(slug);
+  const lesson: any = await fetchPostBySlug(slug);
   return (
     <div className="p-6 ml-auto">
-      <h1 className="text-2xl font-bold mb-4">Chapter Title</h1>
-      <h2>{slug}</h2>
-      <p>
-        We were both young when I first saw you I close my eyes and the
-        flashback starts Romeo, take me somewhere we can be alone
-      </p>
+      <h1 className="text-2xl font-bold mb-4">{lesson.title}</h1>
+
+      <article className="prose lg:prose-xl max-w-none">
+        <PortableText value={lesson.body} />
+      </article>
     </div>
   );
 };
