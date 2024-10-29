@@ -22,7 +22,10 @@ export async function fetchLessons(courseName: string) {
 export async function fetchPostBySlug(slug: string) {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL}/api/lessons/${slug}`
+      `${process.env.NEXT_PUBLIC_SITE_URL}/api/lessons/${slug}`,
+      {
+        cache: "no-cache",
+      }
     );
 
     if (!res.ok) {
