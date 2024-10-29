@@ -19,6 +19,8 @@ const SystemDesignSidebar = () => {
     // Fetch the lessons list
     async function loadLessons() {
       const lessonsData = await fetchLessons("system-design-interview");
+      console.log("Istiak...");
+      console.log(lessonsData);
       setLessons(lessonsData);
     }
     loadLessons();
@@ -65,13 +67,19 @@ const SystemDesignSidebar = () => {
         </div>
 
         <ul className="space-y-2">
-          {lessons.map((l: any, index: any) => (
-            <li className="cursor-pointer hover:bg-gray-200 p-2" key={index}>
-              <p onClick={() => handleLessonSelect(l.slug.current)}>
-                {l.title}
-              </p>
-            </li>
-          ))}
+          {lessons && lessons.length > 0 ? (
+            lessons.map((l: any, index: any) => (
+              <li className="cursor-pointer hover:bg-gray-200 p-2" key={index}>
+                <p onClick={() => handleLessonSelect(l.slug.current)}>
+                  {l.title}
+                </p>
+              </li>
+            ))
+          ) : (
+            <div className="mt-10 p-2 text-2xl text-orange-500">
+              Loading....
+            </div>
+          )}
         </ul>
       </div>
 
