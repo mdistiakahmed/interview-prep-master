@@ -55,7 +55,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className={`relative z-50 bg-white border-b`}>
+    <header className={`relative z-20 bg-white border-b`}>
       <nav className="flex justify-between items-center p-6 md:px-12 text-black bg-transparent">
         {/* Logo */}
         <div className={`text-xl font-semibold `}>

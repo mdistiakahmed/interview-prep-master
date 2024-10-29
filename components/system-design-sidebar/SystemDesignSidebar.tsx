@@ -41,7 +41,7 @@ const SystemDesignSidebar = () => {
   return (
     <>
       {/* Mobile Sidebar Toggle Button */}
-      <div className="md:hidden sticky top-0 p-1 pl-0 bg-transparent ">
+      <div className="md:hidden sticky top-0 p-1 pl-0 bg-transparent z-50">
         <button onClick={toggleSidebar}>
           {isOpen ? (
             <MdKeyboardDoubleArrowLeft />
@@ -54,11 +54,11 @@ const SystemDesignSidebar = () => {
       {/* Sidebar */}
       <div
         className={`fixed inset-y-0 left-0 transform min-h-screen overflow-y-auto ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
+          isOpen ? "translate-x-0 z-50" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out md:relative md:translate-x-0 w-64 md:w-1/4 bg-gray-100 p-4 z-20`}
       >
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold  ">System Design Interview</h2>
+          <h2 className="text-lg font-semibold">System Design Interview</h2>
           <MdKeyboardDoubleArrowLeft
             size={25}
             className="md:hidden"
@@ -86,7 +86,7 @@ const SystemDesignSidebar = () => {
       {/* Backdrop for Mobile */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-50 z-10 md:hidden"
+          className="fixed inset-0 bg-black opacity-50 z-30 md:hidden"
           onClick={toggleSidebar}
         ></div>
       )}
