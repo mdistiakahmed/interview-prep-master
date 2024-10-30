@@ -26,7 +26,10 @@ const Navbar = () => {
       item: "Courses",
       subMenu: [
         { name: "System Design", path: "/courses/system-design-interview" },
-        { name: "Problem Solving", path: "/" },
+        {
+          name: "Algorithms and Data structures",
+          path: "/courses/algorithms-and-data-structures",
+        },
         { name: "Java Interview Prep", path: "/" },
         { name: "JavaScript Interview Prep", path: "/" },
         { name: "React Interview Prep", path: "/" },

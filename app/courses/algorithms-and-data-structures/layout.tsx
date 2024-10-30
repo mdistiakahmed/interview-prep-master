@@ -7,7 +7,7 @@ export default function RootLayout({
 }>) {
   return (
     <div className="flex flex-col md:flex-row">
-      <SystemDesignSidebar courseName="system-design-interview" />
+      <SystemDesignSidebar courseName="algorithms-and-data-structures" />
       <div className="w-full md:w-3/4">{children}</div>
     </div>
   );
