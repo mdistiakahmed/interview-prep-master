@@ -65,14 +65,14 @@ const Page = () => {
         {lessons.map((lesson, index) => (
           <div
             key={index}
-            className="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-200"
+            className="bg-white p-4 border hover:shadow-xl transition-shadow duration-200"
           >
             <Image
               src={lesson.image}
               alt={`${lesson.title} graphic`}
               height={200}
               width={200}
-              className="w-full h-32 object-cover rounded-t-lg"
+              className="w-full h-32 object-cover "
             />
             <div className="mt-4">
               <h2 className="text-xl font-semibold text-gray-800">
