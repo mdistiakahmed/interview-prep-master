@@ -1,14 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { client } from "@/sanity/lib/client";
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { slug: string } }
-) {
-  const { slug } = params;
+export async function GET(req: NextRequest, { params }: any) {
+  const { courseName, slug } = params;
+  let type = "";
+  if (courseName === "system-design-interview") {
+    type = "post";
+  } else if (courseName === "algorithms-and-data-structures") {
+    type = "algorithm";
+  }
 
   const query = `
-    *[_type == "post" && slug.current == $slug][0]{
+    *[_type == $type && slug.current == $slug][0]{
       title,
       body,
       lesson,
@@ -18,7 +21,11 @@ export async function GET(
   `;
 
   try {
-    const post = await client.fetch(query, { slug }, { cache: "no-cache" });
+    const post = await client.fetch(
+      query,
+      { type, slug },
+      { cache: "no-cache" }
+    );
 
     if (!post) {
       return NextResponse.json({ error: "Post not found" }, { status: 404 });

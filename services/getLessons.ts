@@ -19,10 +19,10 @@ export async function fetchLessons(courseName: string) {
   }
 }
 
-export async function fetchPostBySlug(slug: string) {
+export async function fetchPostBySlug(courseName: string, slug: string) {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL}/api/lessons/${slug}`,
+      `${process.env.NEXT_PUBLIC_SITE_URL}/api/lessons/${courseName}/${slug}`,
       {
         cache: "no-cache",
       }

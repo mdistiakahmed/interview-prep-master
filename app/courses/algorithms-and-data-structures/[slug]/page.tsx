@@ -7,8 +7,9 @@ import hljs from "highlight.js";
 import "highlight.js/styles/github.css";
 
 const LessonPage = async ({ params }: any) => {
+  const courseName = "algorithms-and-data-structures";
   const { slug } = params;
-  const lesson: any = await fetchPostBySlug(slug);
+  const lesson: any = await fetchPostBySlug(courseName, slug);
   return (
     <div className="p-6 ml-auto md:px-16">
       <h1 className="text-3xl font-bold font-custom text-[#212529] my-4 tracking-wide text-center">
