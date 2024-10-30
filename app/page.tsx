@@ -59,12 +59,6 @@ export default function Home() {
           various types of interviews, from software engineering to management.
         </p>
       </section>
-
-      <footer className="w-full bg-blue-600 text-white py-4">
-        <div className="container mx-auto text-center px-4">
-          <p>&copy; 2024 InterviewPrepHub. All rights rights reserved.</p>
-        </div>
-      </footer>
     </div>
   );
 }

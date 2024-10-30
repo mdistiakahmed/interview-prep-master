@@ -8,6 +8,7 @@ import {
   MdKeyboardDoubleArrowLeft,
 } from "react-icons/md";
 import { MdArrowForwardIos } from "react-icons/md";
+import Link from "next/link";
 
 const CourseSidebar = ({ courseName }: any) => {
   const [lessons, setLessons] = useState<any>([]);
@@ -58,7 +59,13 @@ const CourseSidebar = ({ courseName }: any) => {
         } transition-transform duration-300 ease-in-out md:relative md:translate-x-0 w-64 md:w-1/4 bg-[#484848] text-white p-4`}
       >
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold">{title}</h2>
+          <Link
+            href={`/courses/${courseName}`}
+            className="text-lg font-semibold cursor-pointer"
+            onClick={() => setSelectedLesson(null)}
+          >
+            {title}
+          </Link>
           <MdKeyboardDoubleArrowLeft
             size={25}
             className="md:hidden"
