@@ -159,7 +159,16 @@ const Navbar = () => {
                 className="flex justify-between items-center px-4 py-2"
                 onClick={() => toggleMobileSubMenu(menu.item)}
               >
-                <Link href={menu.path || "#"}>{menu.item}</Link>
+                <Link
+                  href={menu.path || "#"}
+                  onClick={() => {
+                    if (!menu.subMenu) {
+                      setMobileMenuOpen(false);
+                    }
+                  }}
+                >
+                  {menu.item}
+                </Link>
                 {menu.subMenu && (
                   <FiPlus
                     className={`w-6 h-6 transition-transform transform ${
@@ -175,6 +184,9 @@ const Navbar = () => {
                       key={subIdx}
                       href={sub.path}
                       className="block hover:text-orange-500"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                      }}
                     >
                       {sub.name}
                     </Link>

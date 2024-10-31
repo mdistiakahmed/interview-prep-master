@@ -11,7 +11,7 @@ const LessonPage = async ({ params }: any) => {
   const { slug } = params;
   const lesson: any = await fetchPostBySlug(courseName, slug);
   return (
-    <div className="p-6 ml-auto md:px-16">
+    <div className="p-2 ml-auto md:px-16">
       <h1 className="text-3xl font-bold font-custom text-[#212529] my-4 tracking-wide text-center">
         {lesson.title}
       </h1>
@@ -36,7 +36,7 @@ const CodeBlock = ({ value }: any) => {
   }).value;
 
   return (
-    <pre className="border md:mx-10 my-4 p-4 overflow-x-auto">
+    <pre className="border md:mx-10 my-4 md:p-4 overflow-x-auto">
       <code
         className={`hljs language-${language || "java"}`}
         dangerouslySetInnerHTML={{ __html: highlightedCode }}

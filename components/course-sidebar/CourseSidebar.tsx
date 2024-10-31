@@ -43,11 +43,14 @@ const CourseSidebar = ({ courseName }: any) => {
     <>
       {/* Mobile Sidebar Toggle Button */}
       <div className="md:hidden sticky top-0 p-1 pl-0 bg-transparent z-50">
-        <button onClick={toggleSidebar}>
+        <button
+          onClick={toggleSidebar}
+          className="h-7 w-7 p-1 border bg-white flex items-center justify-center"
+        >
           {isOpen ? (
             <MdKeyboardDoubleArrowLeft />
           ) : (
-            <MdKeyboardDoubleArrowRight size={25} />
+            <MdArrowForwardIos size={25} />
           )}
         </button>
       </div>
@@ -83,7 +86,10 @@ const CourseSidebar = ({ courseName }: any) => {
                     ? "bg-[#777777]"
                     : "bg-transparent"
                 }`}
-                onClick={() => handleLessonSelect(l.slug.current)}
+                onClick={() => {
+                  handleLessonSelect(l.slug.current);
+                  setIsOpen(false);
+                }}
               >
                 <p className="text-sm w-[95%]">{l.title}</p>
                 <MdArrowForwardIos size={20} className="w-5%" />
