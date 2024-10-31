@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FaArrowRight } from "react-icons/fa";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-gray-50 flex flex-col transition-all duration-500 ">
       {/* Hero Section */}
       <header className="relative w-full h-[50vh] sm:h-[70vh]">
         <Image
@@ -20,14 +21,23 @@ export default function Home() {
           <p className="text-lg md:text-xl font-light max-w-lg mb-6 drop-shadow-lg">
             Your ultimate guide to ace software engineering interviews and more.
           </p>
-          <button className="bg-blue-600 text-white py-2 px-8 rounded-full shadow-md hover:bg-blue-700 transition duration-300">
-            Get Started
-          </button>
+          <a
+            href="#preparations"
+            className="group relative h-14 w-44 flex items-center justify-center bg-transparent text-white font-bold rounded-full border-2 border-white transition-all duration-500 overflow-hidden"
+          >
+            <span className="absolute left-1 h-12 w-12 border-2 border-white rounded-full transition-all duration-500 group-hover:w-[165px]"></span>
+
+            <span className="absolute left-5 flex items-center justify-center z-10 ">
+              <FaArrowRight className="text-white" />
+            </span>
+
+            <span className="ml-6 relative z-10">Lets Start</span>
+          </a>
         </div>
       </header>
 
       <main className="flex-1 flex flex-col items-center justify-center text-center px-4 mt-10">
-        <section id="services" className="mx-auto my-16 text-center px-4">
+        <section id="preparations" className="mx-auto my-16 text-center px-4">
           <h2 className="text-2xl font-semibold text-blue-600 mb-8">
             Preparations
           </h2>
