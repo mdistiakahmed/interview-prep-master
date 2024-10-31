@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="246px" height="16px" viewBox="0 0 246 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Stroke 1</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.974446766" stroke-linecap="round" stroke-linejoin="round">
+        <g id="MarginEdge-Homepage_R4" transform="translate(-423.000000, -556.000000)" stroke="#0072CE">
+            <g id="Group-3" transform="translate(-970.423925, 140.965172)">
+                <path d="M1410.9601,425.828553 C1476.33778,421.939716 1541.47166,416.547763 1606.16954,409.666859 C1534.24237,414.621053 1463.12159,423.839508 1394.15741,437.146555 C1403.89725,438.238829 1413.9137,437.400144 1423.72153,436.560042 C1495.47522,430.414405 1567.22657,424.270185 1638.97792,418.124548 C1624.59671,420.416765 1610.21315,422.707566 1595.8296,424.998367" id="Stroke-1" transform="translate(1516.567665, 423.666859) rotate(4.000000) translate(-1516.567665, -423.666859) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

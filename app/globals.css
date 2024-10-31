@@ -11,7 +11,6 @@
   background-color: #b2c9de;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background-color: #6889a5;
   border-radius: 4px;
@@ -19,5 +18,18 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #456d91;
+}
+
+
+/* Underline */
+.custom-underline::after {
+  content: "";
+  display: block;
+  width: 200px; /* Adjust width as needed */
+  height: 10px; /* Adjust height as needed */
+  margin: 0.5rem auto 0; /* Centers and adds space */
+  background-image: url('/underline.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 

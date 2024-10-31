@@ -8,6 +8,8 @@ export async function GET(req: NextRequest, { params }: any) {
     type = "post";
   } else if (courseName === "algorithms-and-data-structures") {
     type = "algorithm";
+  } else if (courseName === "java") {
+    type = "java";
   }
 
   const query = `

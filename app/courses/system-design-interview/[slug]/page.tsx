@@ -12,7 +12,7 @@ const LessonPage = async ({ params }: any) => {
   const lesson: any = await fetchPostBySlug(courseName, slug);
   return (
     <div className="p-4 ml-auto md:px-16">
-      <h1 className="text-3xl font-bold font-custom text-[#212529] my-4 tracking-wide text-center">
+      <h1 className="text-3xl font-bold font-custom text-[#212529] my-4 tracking-wide text-center custom-underline">
         {lesson.title}
       </h1>
 

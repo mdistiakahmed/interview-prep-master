@@ -30,7 +30,7 @@ const Navbar = () => {
           name: "Algorithms and Data structures",
           path: "/courses/algorithms-and-data-structures",
         },
-        { name: "Java Interview Prep", path: "/" },
+        { name: "Java Interview Prep", path: "/courses/java" },
         { name: "JavaScript Interview Prep", path: "/" },
         { name: "React Interview Prep", path: "/" },
         { name: "Behavioural Interview  Prep", path: "/" },

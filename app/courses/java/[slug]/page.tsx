@@ -7,7 +7,7 @@ import hljs from "highlight.js";
 import "highlight.js/styles/github.css";
 
 const LessonPage = async ({ params }: any) => {
-  const courseName = "algorithms-and-data-structures";
+  const courseName = "java";
   const { slug } = params;
   const lesson: any = await fetchPostBySlug(courseName, slug);
   return (
