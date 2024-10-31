@@ -16,10 +16,26 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title:
-    "Master Your Interviews | Comprehensive Interview Preparation Resources",
+  title: "Interview Preperation for software engineers",
   description:
     "InterViewPrepMaster offers top-notch resources and guides to help you ace every interview. From software engineering and system design to problem-solving and behavioral interviews, get ready to succeed with our expert tips and in-depth preparation materials. Join our community today and take the first step towards landing your dream job.",
+  openGraph: {
+    title: "Interview Preperation for software engineers",
+    description:
+      "InterViewPrepMaster offers top-notch resources and guides to help you ace every interview. From software engineering and system design to problem-solving and behavioral interviews, get ready to succeed with our expert tips and in-depth preparation materials. Join our community today and take the first step towards landing your dream job.",
+    type: "website",
+    locale: "en_US",
+    url: `https://www.interviewprepmaster.com/`,
+    siteName: "InterviewPrepMaster",
+    images: [
+      {
+        url: "/study.jpg",
+        width: 1200,
+        height: 630,
+        alt: "study",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col transition-all duration-500 ">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Hero Section */}
       <header className="relative w-full h-[50vh] sm:h-[70vh]">
         <Image
@@ -37,7 +37,10 @@ export default function Home() {
       </header>
 
       <main className="flex-1 flex flex-col items-center justify-center text-center px-4 mt-10">
-        <section id="preparations" className="mx-auto my-16 text-center px-4">
+        <section
+          id="preparations"
+          className="mx-auto my-16 text-center px-4 scroll-mt-16"
+        >
           <h2 className="text-2xl font-semibold text-blue-600 mb-8">
             Preparations
           </h2>
