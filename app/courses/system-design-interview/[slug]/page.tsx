@@ -119,6 +119,11 @@ const myPortableTextComponents = {
         {children}
       </p>
     ),
+    blockquote: ({ children }: any) => (
+      <blockquote className="border-l-4 border-gray-400 pl-4 italic text-gray-700 my-4 font-custom leading-[28px]">
+        {children}
+      </blockquote>
+    ),
   },
   list: {
     bullet: ({ children }: any) => (
