@@ -23,6 +23,7 @@ import {
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import DownloadButton from "./DownloadButton";
+import { initialEdges, initialNodes } from "./nodes-edges";
 
 const GetLayoutedElements = (nodes: any, edges: any, options: any) => {
   const g = new Dagre.graphlib.Graph().setDefaultEdgeLabel(() => ({}));
@@ -72,7 +73,7 @@ const CustomNode = ({ data, selected = false }: any) => {
         minHeight={30}
       />
       <Handle type="target" position={Position.Top} />
-      <div style={{ padding: 10 }}>
+      <div style={{ padding: 10, width: "100%" }}>
         <input
           type="text"
           value={label}
@@ -83,6 +84,7 @@ const CustomNode = ({ data, selected = false }: any) => {
             background: "transparent",
             textAlign: "center",
             outline: "none",
+            textWrap: "wrap",
           }}
         />
       </div>
@@ -91,65 +93,30 @@ const CustomNode = ({ data, selected = false }: any) => {
   );
 };
 
-const initialNodes = [
-  {
-    id: "1",
-    position: { x: 100, y: 50 },
-    type: "customNode",
-    data: { label: "Resize when selected" },
-    style: {
-      background: "#fff",
-      border: "1px solid black",
-      borderRadius: 15,
-      fontSize: 12,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-  },
-  {
-    id: "2",
-    position: { x: 100, y: 150 },
-    type: "customNode",
-    data: { label: "Resize when selected" },
-    style: {
-      background: "#fff",
-      border: "1px solid black",
-      fontSize: 12,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      width: 100,
-      height: 100,
-      borderRadius: "50%",
-    },
-  },
-  {
-    id: "3",
-    position: { x: 100, y: 300 },
-    type: "customNode",
-    data: { label: "Resize when selected" },
-    style: {
-      background: "#fff",
-      border: "1px solid black",
-      borderRadius: 15,
-      fontSize: 12,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-  },
-];
-const initialEdges = [{ id: "e1-2", source: "1", target: "2", animated: true }];
-
 const DiagramEditor = forwardRef((props, ref) => {
   const [nodes, setNodes, onNodesChange] = useNodesState<any>(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [selectedNodeId, setSelectedNodeId] = useState(null);
+  const [isAnimateEdge, setIsAnimateEdge] = useState(true);
 
   const onNodesClick = useCallback((event: any, node: any) => {
-    setSelectedNodeId(node.id); // Track the selected node
+    setSelectedNodeId(node.id);
   }, []);
+
+  const onConnect = useCallback(
+    (params: any) =>
+      setEdges((eds) => addEdge({ ...params, animated: isAnimateEdge }, eds)),
+    [setEdges, isAnimateEdge]
+  );
+
+  const updateEdgeType = (type: any) => {
+    setEdges((eds) => eds.map((edge) => ({ ...edge, type }))); // Update edge type for all edges
+  };
+
+  const updateAnimation = (newAnimation: any) => {
+    setIsAnimateEdge(newAnimation);
+    setEdges((eds) => eds.map((edge) => ({ ...edge, animated: newAnimation }))); // Update animation for all edges
+  };
 
   const applyTheme = (newTheme: any) => {
     if (selectedNodeId) {
@@ -179,7 +146,7 @@ const DiagramEditor = forwardRef((props, ref) => {
     const id = `${shape}-${nodes.length + 1}`;
     const newNode = {
       id,
-      position: { x: 0, y: 0 },
+      position: { x: 0, y: 20 },
       data: { label: `${shape} shape` },
       type: "customNode",
       style:
@@ -202,11 +169,6 @@ const DiagramEditor = forwardRef((props, ref) => {
     setNodes((nds) => [...nds, newNode]);
   };
 
-  const onConnect = useCallback(
-    (params: any) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
-  );
-
   const nodeTypes = {
     customNode: CustomNode,
   };
@@ -227,14 +189,6 @@ const DiagramEditor = forwardRef((props, ref) => {
     },
     [nodes, edges]
   );
-
-  const updateEdgeType = (type: any) => {
-    setEdges((eds) => eds.map((edge) => ({ ...edge, type }))); // Update edge type for all edges
-  };
-
-  const updateAnimation = (newAnimation: any) => {
-    setEdges((eds) => eds.map((edge) => ({ ...edge, animated: newAnimation }))); // Update animation for all edges
-  };
 
   // Expose onLayout method to parent via ref
   useImperativeHandle(ref, () => ({
