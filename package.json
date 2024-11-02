@@ -19,6 +19,7 @@
     "@sanity/vision": "^3.61.0",
     "@xyflow/react": "^12.3.4",
     "highlight.js": "^11.10.0",
+    "html-to-image": "^1.11.11",
     "next": "14.2.15",
     "next-sanity": "^9.5.4",
     "react": "^18",

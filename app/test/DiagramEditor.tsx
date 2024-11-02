@@ -22,6 +22,7 @@ import {
   useReactFlow,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
+import DownloadButton from "./DownloadButton";
 
 const getLayoutedElements = (nodes: any, edges: any, options: any) => {
   const g = new Dagre.graphlib.Graph().setDefaultEdgeLabel(() => ({}));
@@ -254,9 +255,11 @@ const DiagramEditor = forwardRef((props, ref) => {
       nodeTypes={nodeTypes}
       fitView
       onNodeClick={onNodesClick}
+      className="download-image"
     >
       <Controls />
       <Background variant={BackgroundVariant.Cross} />
+      <DownloadButton />
     </ReactFlow>
   );
 });

@@ -40,4 +40,20 @@ html {
   background-repeat: no-repeat;
 }
 
+/* react-flow editor */
+
+
+.download-image .download-btn {
+  border: 1px solid #eee;
+  background: #ebf8ff;
+  padding: 5px 5px;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.download-image .download-btn:hover {
+  opacity: 0.9;
+}
+
 
