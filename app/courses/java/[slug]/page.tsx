@@ -54,7 +54,8 @@ const MyPortableTextImage = ({ value }: any) => {
         src={urlForImage(value)}
         alt={alt || "image"}
         width={400}
-        height={200}
+        height={300}
+        className="text-center h-auto w-auto max-h-[400px]"
       />
     </div>
   );
