@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 
+
+
 html {
   scroll-behavior: smooth;
 }
@@ -37,4 +39,5 @@ html {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
 
