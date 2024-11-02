@@ -37,14 +37,9 @@ const Navbar = () => {
       ],
     },
     {
-      item: "Exams",
+      item: "Design Tools",
       subMenu: [
-        { name: "System Design Exam", path: "/" },
-        { name: "Problem Solving Exam", path: "/" },
-        { name: "Java Exam", path: "/" },
-        { name: "JavaScript Exam", path: "/" },
-        { name: "React Exam", path: "/" },
-        { name: "Behavioural Exam", path: "/" },
+        { name: "Simple Flow Chart", path: "/design-tools/simple-flow-chart" },
       ],
     },
     {

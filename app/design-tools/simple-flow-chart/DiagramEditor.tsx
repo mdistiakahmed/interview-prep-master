@@ -264,4 +264,6 @@ const DiagramEditor = forwardRef((props, ref) => {
   );
 });
 
+DiagramEditor.displayName = "DiagramEditor";
+
 export default DiagramEditor;
