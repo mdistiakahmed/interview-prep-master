@@ -24,7 +24,7 @@ import {
 import "@xyflow/react/dist/style.css";
 import DownloadButton from "./DownloadButton";
 
-const getLayoutedElements = (nodes: any, edges: any, options: any) => {
+const GetLayoutedElements = (nodes: any, edges: any, options: any) => {
   const g = new Dagre.graphlib.Graph().setDefaultEdgeLabel(() => ({}));
   g.setGraph({ rankdir: options.direction });
 
@@ -53,7 +53,7 @@ const getLayoutedElements = (nodes: any, edges: any, options: any) => {
   };
 };
 
-function CustomNode({ data, selected = false }: any) {
+const CustomNode = ({ data, selected = false }: any) => {
   const [label, setLabel] = useState(data.label);
   useEffect(() => {
     setLabel(data.label);
@@ -89,7 +89,7 @@ function CustomNode({ data, selected = false }: any) {
       <Handle type="source" position={Position.Bottom} />
     </>
   );
-}
+};
 
 const initialNodes = [
   {
@@ -216,7 +216,7 @@ const DiagramEditor = forwardRef((props, ref) => {
   const onLayout = useCallback(
     (direction: any) => {
       console.log(nodes);
-      const layouted = getLayoutedElements(nodes, edges, { direction });
+      const layouted = GetLayoutedElements(nodes, edges, { direction });
 
       setNodes([...layouted.nodes]);
       setEdges([...layouted.edges]);
