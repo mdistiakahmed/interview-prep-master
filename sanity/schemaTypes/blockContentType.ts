@@ -1,5 +1,6 @@
 import { defineType, defineArrayMember, defineField } from "sanity";
 import { ImageIcon } from "@sanity/icons";
+import { table } from "@sanity/table";
 
 export const blockContentType = defineType({
   title: "Block Content",
@@ -40,6 +41,9 @@ export const blockContentType = defineType({
           },
         ],
       },
+    }),
+    defineArrayMember({
+      type: "table", // Add table type here
     }),
     defineArrayMember({
       type: "image",

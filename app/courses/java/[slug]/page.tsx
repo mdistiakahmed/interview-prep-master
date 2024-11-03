@@ -45,17 +45,28 @@ const CodeBlock = ({ value }: any) => {
   );
 };
 
+function extractImageDimensions(ref: any) {
+  const match = ref.match(/-(\d+)x(\d+)-/);
+  if (!match) {
+    throw new Error("Invalid image reference format");
+  }
+  const width = parseInt(match[1], 10);
+  const height = parseInt(match[2], 10);
+  return { width, height };
+}
+
 const MyPortableTextImage = ({ value }: any) => {
   const { asset, alt } = value;
+  const dimensions = extractImageDimensions(asset._ref);
 
   return (
     <div className="w-full flex justify-center">
       <Image
         src={urlForImage(value)}
         alt={alt || "image"}
-        width={400}
-        height={300}
-        className="text-center h-auto w-auto max-h-[400px]"
+        width={dimensions.width}
+        height={dimensions.height}
+        className="text-center h-auto w-auto max-h-[600px]"
       />
     </div>
   );
@@ -80,11 +91,35 @@ const MyPortableTextVideo = ({ value }: any) => {
   );
 };
 
+const TableComponent = ({ value }: any) => {
+  return (
+    <div className="md:mx-10 my-4  overflow-x-auto">
+      <table className="min-w-full border-collapse border border-gray-300">
+        <tbody>
+          {value.rows.map((row: any, rowIndex: number) => (
+            <tr key={rowIndex} className="border-b border-gray-300">
+              {row.cells.map((cell: any, cellIndex: number) => (
+                <td
+                  key={cellIndex}
+                  className="px-4 py-2 border border-gray-300 text-left"
+                >
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
 const myPortableTextComponents = {
   types: {
     image: MyPortableTextImage,
     videoEmbed: MyPortableTextVideo,
     myCodeField: CodeBlock,
+    table: TableComponent,
   },
   marks: {
     myCodeField: ({ children }: any) => <CodeBlock>{children}</CodeBlock>,
@@ -131,6 +166,11 @@ const myPortableTextComponents = {
       <ul className="list-disc pl-6 font-custom leading-[26px] text-[#212529] text-justify">
         {children}
       </ul>
+    ),
+    number: ({ children }: any) => (
+      <ol className="list-decimal pl-6 font-custom leading-[26px] text-[#212529] text-justify">
+        {children}
+      </ol>
     ),
   },
 };
