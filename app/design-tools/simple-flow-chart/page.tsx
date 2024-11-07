@@ -12,6 +12,7 @@ import { TbOvalVertical } from "react-icons/tb";
 import { FaGripHorizontal, FaGripVertical } from "react-icons/fa";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdArrowForwardIos } from "react-icons/md";
+import { BackgroundVariant } from "@xyflow/react";
 
 const DiagramPage = () => {
   const layoutFlowRef = useRef<any>();
@@ -35,7 +36,8 @@ const DiagramPage = () => {
   };
 
   const [theme, setTheme] = useState({ background: "#fff", color: "#000" }); // Default theme
-  const [edgeType, setEdgeType] = useState("bezier"); // Default edge type
+  const [edgeType, setEdgeType] = useState("bezier");
+  const [bgType, setBgType] = useState(null);
   const [animation, setAnimation] = useState(true);
 
   const handleThemeChange = (newTheme: any) => {
@@ -57,6 +59,13 @@ const DiagramPage = () => {
     setAnimation(newAnimationState);
     if (layoutFlowRef.current) {
       layoutFlowRef.current.updateAnimation(newAnimationState);
+    }
+  };
+
+  const handleBackgroundChange = (newBg: any) => {
+    setBgType(newBg);
+    if (layoutFlowRef.current) {
+      layoutFlowRef.current.changeBackground(newBg);
     }
   };
 
@@ -86,7 +95,7 @@ const DiagramPage = () => {
         <div
           className={`fixed inset-y-0 left-0 transform min-h-screen overflow-y-auto ${
             isOpen ? "translate-x-0 z-50" : "-translate-x-full"
-          } transition-transform duration-300 ease-in-out md:relative md:translate-x-0 w-64 md:w-1/4 bg-gray-200 p-4 flex flex-col gap-2  text-xs text-gray-600`}
+          } transition-transform duration-300 ease-in-out md:relative md:translate-x-0 w-64 md:w-1/4 bg-gray-100 p-4 flex flex-col gap-4  text-xs text-gray-600`}
         >
           {/* Shape icon buttons in a grid */}
           <div className="flex flex-col border border-black p-2">
@@ -115,15 +124,7 @@ const DiagramPage = () => {
             <h3 className="font-bold">Shape Color</h3>
             <div className="grid grid-cols-3 gap-4 mt-2">
               <button
-                className="p-1 bg-[#3b82f6] text-white rounded"
-                onClick={() =>
-                  handleThemeChange({ background: "#3b82f6", color: "#ffffff" })
-                }
-              >
-                Abc
-              </button>
-              <button
-                className="p-1 bg-white text-black border rounded"
+                className="p-2 bg-white text-black border rounded"
                 onClick={() =>
                   handleThemeChange({
                     background: "#ffffff",
@@ -134,9 +135,42 @@ const DiagramPage = () => {
                 Abc
               </button>
               <button
-                className="p-1 bg-[#FFBF00] text-black rounded"
+                className="p-2 bg-[#3b82f6] text-white rounded"
+                onClick={() =>
+                  handleThemeChange({ background: "#3b82f6", color: "#ffffff" })
+                }
+              >
+                Abc
+              </button>
+
+              <button
+                className="p-2 bg-[#FFBF00] text-black rounded"
                 onClick={() =>
                   handleThemeChange({ background: "#FFBF00", color: "#000000" })
+                }
+              >
+                Abc
+              </button>
+              <button
+                className="p-2 bg-[#9C27B0] text-white rounded"
+                onClick={() =>
+                  handleThemeChange({ background: "#9C27B0", color: "#FFFFFF" })
+                }
+              >
+                Abc
+              </button>
+              <button
+                className="p-2 bg-[#FF5722] text-white rounded"
+                onClick={() =>
+                  handleThemeChange({ background: "#FF5722", color: "#FFFFFF" })
+                }
+              >
+                Abc
+              </button>
+              <button
+                className="p-2 bg-[#4CAF50] text-white rounded"
+                onClick={() =>
+                  handleThemeChange({ background: "#4CAF50", color: "#FFFFFF" })
                 }
               >
                 Abc
@@ -201,6 +235,37 @@ const DiagramPage = () => {
             >
               {animation ? "Disable Animation" : "Enable Animation"}
             </button>
+          </div>
+
+          {/* Edge Type Buttons */}
+          <div className="flex flex-col border border-black p-2 text-wrap">
+            <h3 className="font-bold mb-1">Display Background</h3>
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                className={`p-2 rounded ${bgType === null ? "bg-blue-500 text-white" : "bg-gray-300"}`}
+                onClick={() => handleBackgroundChange(null)}
+              >
+                None
+              </button>
+              <button
+                className={`p-2 rounded ${bgType === BackgroundVariant.Dots ? "bg-blue-500 text-white" : "bg-gray-300"}`}
+                onClick={() => handleBackgroundChange(BackgroundVariant.Dots)}
+              >
+                Dots
+              </button>
+              <button
+                className={`p-2 rounded ${bgType === BackgroundVariant.Cross ? "bg-blue-500 text-white" : "bg-gray-300"}`}
+                onClick={() => handleBackgroundChange(BackgroundVariant.Cross)}
+              >
+                Cross
+              </button>
+              <button
+                className={`p-2 rounded ${bgType === BackgroundVariant.Lines ? "bg-blue-500 text-white" : "bg-gray-300"}`}
+                onClick={() => handleBackgroundChange(BackgroundVariant.Lines)}
+              >
+                Lines
+              </button>
+            </div>
           </div>
         </div>
         {/* Backdrop for Mobile */}

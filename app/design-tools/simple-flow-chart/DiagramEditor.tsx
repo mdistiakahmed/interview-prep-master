@@ -98,6 +98,7 @@ const DiagramEditor = forwardRef((props, ref) => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [selectedNodeId, setSelectedNodeId] = useState(null);
   const [isAnimateEdge, setIsAnimateEdge] = useState(true);
+  const [background, setBackground] = useState<any>(null);
 
   const onNodesClick = useCallback((event: any, node: any) => {
     setSelectedNodeId(node.id);
@@ -116,6 +117,10 @@ const DiagramEditor = forwardRef((props, ref) => {
   const updateAnimation = (newAnimation: any) => {
     setIsAnimateEdge(newAnimation);
     setEdges((eds) => eds.map((edge) => ({ ...edge, animated: newAnimation }))); // Update animation for all edges
+  };
+
+  const changeBackground = (newBg: any) => {
+    setBackground(newBg);
   };
 
   const applyTheme = (newTheme: any) => {
@@ -197,6 +202,7 @@ const DiagramEditor = forwardRef((props, ref) => {
     applyTheme,
     updateEdgeType,
     updateAnimation,
+    changeBackground,
   }));
 
   return (
@@ -212,7 +218,8 @@ const DiagramEditor = forwardRef((props, ref) => {
       className="download-image"
     >
       <Controls />
-      <Background variant={BackgroundVariant.Cross} />
+      {background && <Background variant={background} />}
+
       <DownloadButton />
     </ReactFlow>
   );
