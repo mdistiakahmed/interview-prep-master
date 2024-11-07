@@ -13,6 +13,7 @@ import { FaGripHorizontal, FaGripVertical } from "react-icons/fa";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdArrowForwardIos } from "react-icons/md";
 import { BackgroundVariant } from "@xyflow/react";
+import SimpleFlowChartFAQ from "./SimpleFlowChartFAQ";
 
 const DiagramPage = () => {
   const layoutFlowRef = useRef<any>();
@@ -277,11 +278,18 @@ const DiagramPage = () => {
         )}
 
         {/* Main flowchart area */}
-        <div className="flex-grow border-2 flex items-start justify-start">
+        <div className="flex-grow border-2 flex flex-col">
+          <h1 className="w-full text-center text-2xl font-semibold text-gray-400 italic">
+            Simplified Flow Chart
+          </h1>
           <div className="w-[80vw] h-[80vh] border border-gray-300">
             <ReactFlowProvider>
               <DiagramEditor ref={layoutFlowRef} />
             </ReactFlowProvider>
+          </div>
+
+          <div className="w-[80vw]  ">
+            <SimpleFlowChartFAQ />
           </div>
         </div>
       </>
