@@ -66,9 +66,9 @@ const SimpleFlowChartFAQ = () => {
             4. Is there an option to export the flowchart?
           </h3>
           <p className="text-gray-700">
-            Yes, once you're done designing your flowchart, you can export it as
-            an image file by clicking the "Download" button in the editor. This
-            lets you easily save and share your work.
+            Yes, once you&lsquo;re done designing your flowchart, you can export
+            it as an image file by clicking the &lsquo;Download&lsquo; button in
+            the editor. This lets you easily save and share your work.
           </p>
         </div>
 
@@ -79,8 +79,8 @@ const SimpleFlowChartFAQ = () => {
           </h3>
           <p className="text-gray-700">
             You can reset your flowchart by clearing all shapes and connections
-            through the "Reset" option in the sidebar. This will give you a
-            clean slate to work with.
+            through the &lsquo;Reset&lsquo; option in the sidebar. This will
+            give you a clean slate to work with.
           </p>
         </div>
       </div>
