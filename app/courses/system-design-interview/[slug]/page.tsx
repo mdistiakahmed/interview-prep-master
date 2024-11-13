@@ -156,24 +156,24 @@ const myPortableTextComponents = {
       </h4>
     ),
     normal: ({ children }: any) => (
-      <p className="my-4 font-custom font-[400] leading-[26px] text-[#212529] text-justify ">
+      <p className="my-4 font-custom text-xl font-[400] leading-[26px] text-[#212529] text-justify ">
         {children}
       </p>
     ),
     blockquote: ({ children }: any) => (
-      <blockquote className="border-l-4 border-gray-400 pl-4 italic text-gray-700 my-4 font-custom leading-[28px]">
+      <blockquote className="border-l-4 border-gray-400 pl-4 italic text-gray-700 my-4 font-custom leading-[28px] text-xl">
         {children}
       </blockquote>
     ),
   },
   list: {
     bullet: ({ children }: any) => (
-      <ul className="list-disc pl-6 font-custom leading-[26px] text-[#212529] text-justify">
+      <ul className="list-disc pl-6 font-custom text-[#212529] text-justify text-xl">
         {children}
       </ul>
     ),
     number: ({ children }: any) => (
-      <ol className="list-decimal pl-6 font-custom leading-[26px] text-[#212529] text-justify">
+      <ol className="list-decimal pl-6 font-custom  text-[#212529] text-justify text-xl ">
         {children}
       </ol>
     ),
