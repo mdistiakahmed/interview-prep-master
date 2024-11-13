@@ -97,7 +97,12 @@ const TableComponent = ({ value }: any) => {
       <table className="min-w-full border-collapse border border-gray-300">
         <tbody>
           {value.rows.map((row: any, rowIndex: number) => (
-            <tr key={rowIndex} className="border-b border-gray-300">
+            <tr
+              key={rowIndex}
+              className={`border-b border-gray-300 ${
+                rowIndex === 0 ? "bg-gray-200" : ""
+              }`}
+            >
               {row.cells.map((cell: any, cellIndex: number) => (
                 <td
                   key={cellIndex}
