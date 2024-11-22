@@ -18,6 +18,7 @@ export async function GET(req: NextRequest, { params }: any) {
       body,
       lesson,
       publishedAt,
+      excerpt,
       "categories": categories[]->title
     }
   `;

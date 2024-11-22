@@ -5,6 +5,36 @@ import Image from "next/image";
 import React from "react";
 import hljs from "highlight.js";
 import "highlight.js/styles/github.css";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: any): Promise<Metadata | undefined> {
+  const courseName = "system-design-interview";
+  const { slug } = params;
+  const lesson: any = await fetchPostBySlug(courseName, slug);
+
+  return {
+    title: `${lesson?.title || "Article"}`,
+    description: `${lesson?.excerpt}`,
+    openGraph: {
+      title: `${lesson?.title || "Article"}`,
+      description: `${lesson?.excerpt}`,
+      type: "article",
+      locale: "en_US",
+      url: `https://www.interviewprepmaster.com/courses/system-design-interview/${slug}`,
+      siteName: "interviewprepmaster",
+      images: [
+        {
+          url: "/system-design.png",
+          width: 1200,
+          height: 630,
+          alt: "system design",
+        },
+      ],
+    },
+  };
+}
 
 const LessonPage = async ({ params }: any) => {
   const courseName = "system-design-interview";

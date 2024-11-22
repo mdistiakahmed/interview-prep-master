@@ -35,6 +35,13 @@ export const postType = defineType({
       name: "body",
       type: "blockContent",
     }),
+    defineField({
+      name: "excerpt",
+      type: "text",
+      title: "Excerpt",
+      validation: (Rule) =>
+        Rule.max(200).warning("Excerpt should be 200 characters or fewer."),
+    }),
   ],
   preview: {
     select: {
