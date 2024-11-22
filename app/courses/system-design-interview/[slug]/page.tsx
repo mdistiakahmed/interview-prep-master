@@ -185,11 +185,24 @@ const myPortableTextComponents = {
         {children}
       </h4>
     ),
-    normal: ({ children }: any) => (
-      <p className="my-4 font-custom text-xl font-[400] leading-[26px] text-[#212529] text-justify ">
-        {children}
-      </p>
-    ),
+    normal: ({ children }: any) => {
+      const isEmpty =
+        !children || (children.length === 1 && children[0] === "");
+
+      if (isEmpty) {
+        return (
+          <div className="h-4">
+            {/* Empty div to create space for an empty line */}
+          </div>
+        );
+      }
+
+      return (
+        <p className="my-4 font-custom text-xl font-[400] leading-[26px] text-[#212529] text-justify ">
+          {children}
+        </p>
+      );
+    },
     blockquote: ({ children }: any) => (
       <blockquote className="border-l-4 border-gray-400 pl-4 italic text-gray-700 my-4 font-custom leading-[28px] text-xl">
         {children}

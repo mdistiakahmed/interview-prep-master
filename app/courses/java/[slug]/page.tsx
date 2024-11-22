@@ -5,6 +5,36 @@ import Image from "next/image";
 import React from "react";
 import hljs from "highlight.js";
 import "highlight.js/styles/github.css";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: any): Promise<Metadata | undefined> {
+  const courseName = "java";
+  const { slug } = params;
+  const lesson: any = await fetchPostBySlug(courseName, slug);
+
+  return {
+    title: `${lesson?.title || "Article"}`,
+    description: `${lesson?.excerpt}`,
+    openGraph: {
+      title: `${lesson?.title || "Article"}`,
+      description: `${lesson?.excerpt}`,
+      type: "article",
+      locale: "en_US",
+      url: `https://www.interviewprepmaster.com/courses/java/${slug}`,
+      siteName: "interviewprepmaster",
+      images: [
+        {
+          url: "/java.png",
+          width: 1200,
+          height: 630,
+          alt: "java logo",
+        },
+      ],
+    },
+  };
+}
 
 const LessonPage = async ({ params }: any) => {
   const courseName = "java";
@@ -155,11 +185,24 @@ const myPortableTextComponents = {
         {children}
       </h4>
     ),
-    normal: ({ children }: any) => (
-      <p className="my-4 font-custom font-[400] leading-[26px] text-[#212529] text-justify ">
-        {children}
-      </p>
-    ),
+    normal: ({ children }: any) => {
+      const isEmpty =
+        !children || (children.length === 1 && children[0] === "");
+
+      if (isEmpty) {
+        return (
+          <div className="h-4">
+            {/* Empty div to create space for an empty line */}
+          </div>
+        );
+      }
+
+      return (
+        <p className="my-4 font-custom text-xl font-[400] leading-[26px] text-[#212529] text-justify ">
+          {children}
+        </p>
+      );
+    },
     blockquote: ({ children }: any) => (
       <blockquote className="border-l-4 border-gray-400 pl-4 italic text-gray-700 my-4 font-custom leading-[28px]">
         {children}
