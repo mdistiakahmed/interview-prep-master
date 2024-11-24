@@ -74,7 +74,7 @@ const CourseSidebar = ({ courseName }: any) => {
         <div className="flex items-center justify-between mb-4">
           <Link
             href={`/courses/${courseName}`}
-            className="text-lg font-semibold cursor-pointer"
+            className="text-lg  cursor-pointer border-b-2 md:mx-auto"
             onClick={() => setSelectedLesson(null)}
           >
             {title}
