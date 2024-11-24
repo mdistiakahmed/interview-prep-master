@@ -18,14 +18,13 @@ const CourseSidebar = ({ courseName }: any) => {
     .map((word: any) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 
-  console.log(courseName);
-
   const router = useRouter();
 
   useEffect(() => {
     async function loadLessons() {
       const lessonsData = await fetchLessons(courseName);
-      setLessons(lessonsData);
+
+      setLessons(lessonsData); // Use mocked data for testing
     }
     loadLessons();
   }, [courseName]);
@@ -40,6 +39,15 @@ const CourseSidebar = ({ courseName }: any) => {
     setSelectedLesson(lessonSlug);
     router.push(`/courses/${courseName}/${lessonSlug}`);
   };
+
+  // Group lessons by category
+  const groupedLessons = lessons.reduce((acc: any, lesson: any) => {
+    if (!acc[lesson.category]) {
+      acc[lesson.category] = [];
+    }
+    acc[lesson.category].push(lesson);
+    return acc;
+  }, {});
 
   return (
     <>
@@ -78,24 +86,31 @@ const CourseSidebar = ({ courseName }: any) => {
           />
         </div>
 
-        <ul className="space-y-2">
-          {lessons && lessons.length > 0 ? (
-            lessons.map((l: any, index: any) => (
-              <li
-                key={index}
-                className={`flex items-center justify-between cursor-pointer hover:bg-[#555555] p-2 ${
-                  selectedLesson === l.slug.current
-                    ? "bg-[#777777]"
-                    : "bg-transparent"
-                }`}
-                onClick={() => {
-                  handleLessonSelect(l.slug.current);
-                  setIsOpen(false);
-                }}
-              >
-                <p className="text-sm w-[95%]">{l.title}</p>
-                <MdArrowForwardIos size={20} className="w-5%" />
-              </li>
+        <ul className="space-y-4">
+          {Object.keys(groupedLessons).length > 0 ? (
+            Object.entries(groupedLessons).map(([category, lessons]: any) => (
+              <div key={category}>
+                <h3 className="font-bold text-lg mb-2">{category}</h3>
+                <ul className="space-y-2">
+                  {lessons.map((l: any) => (
+                    <li
+                      key={l.slug.current}
+                      className={`flex items-center justify-between cursor-pointer hover:bg-[#555555] p-2 ${
+                        selectedLesson === l.slug.current
+                          ? "bg-[#777777]"
+                          : "bg-transparent"
+                      }`}
+                      onClick={() => {
+                        handleLessonSelect(l.slug.current);
+                        setIsOpen(false);
+                      }}
+                    >
+                      <p className="text-sm w-[95%]">{l.title}</p>
+                      <MdArrowForwardIos size={20} className="w-5%" />
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))
           ) : (
             <div className="mt-10 p-2 text-2xl text-orange-500">

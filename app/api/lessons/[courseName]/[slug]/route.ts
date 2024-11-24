@@ -5,7 +5,7 @@ export async function GET(req: NextRequest, { params }: any) {
   const { courseName, slug } = params;
   let type = "";
   if (courseName === "system-design-interview") {
-    type = "post";
+    type = "sysdesign";
   } else if (courseName === "algorithms-and-data-structures") {
     type = "algorithm";
   } else if (courseName === "java") {

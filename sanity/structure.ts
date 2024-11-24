@@ -5,10 +5,9 @@ export const structure: StructureResolver = (S) =>
   S.list()
     .title("Blog")
     .items([
-      S.documentTypeListItem("post").title("Posts"),
-      S.documentTypeListItem("category").title("Categories"),
+      S.documentTypeListItem("category").title("Category"),
       S.divider(),
       ...S.documentTypeListItems().filter(
-        (item) => item.getId() && !["post", "category"].includes(item.getId()!)
+        (item) => item.getId() && !["category"].includes(item.getId()!)
       ),
     ]);

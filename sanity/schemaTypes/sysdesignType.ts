@@ -1,9 +1,9 @@
 import { DocumentTextIcon } from "@sanity/icons";
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { defineField, defineType } from "sanity";
 
-export const postType = defineType({
-  name: "post",
-  title: "Post",
+export const sysdesignType = defineType({
+  name: "sysdesign",
+  title: "System Design",
   type: "document",
   icon: DocumentTextIcon,
   fields: [
@@ -19,9 +19,12 @@ export const postType = defineType({
       },
     }),
     defineField({
-      name: "categories",
-      type: "array",
-      of: [defineArrayMember({ type: "reference", to: { type: "category" } })],
+      name: "category",
+      type: "reference",
+      to: { type: "category" },
+      title: "Category",
+      validation: (Rule) =>
+        Rule.required().error("A category must be selected."),
     }),
     {
       name: "lesson",

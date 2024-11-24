@@ -6,7 +6,7 @@ export async function GET(req: NextRequest, { params }: any) {
 
   let type = "";
   if (courseName === "system-design-interview") {
-    type = "post";
+    type = "sysdesign";
   } else if (courseName === "algorithms-and-data-structures") {
     type = "algorithm";
   } else if (courseName === "java") {
@@ -17,7 +17,8 @@ export async function GET(req: NextRequest, { params }: any) {
     *[_type == $type]{
       title,
       slug,
-      lesson
+      lesson,
+      "category": category->title
     } | order(lesson asc)
   `;
 

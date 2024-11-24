@@ -2,10 +2,10 @@ import { type SchemaTypeDefinition } from "sanity";
 
 import { blockContentType } from "./blockContentType";
 import { categoryType } from "./categoryType";
-import { postType } from "./postType";
+import { sysdesignType } from "./sysdesignType";
 import { algoType } from "./algoType";
 import { javaType } from "./javaType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, categoryType, postType, algoType, javaType],
+  types: [blockContentType, categoryType, sysdesignType, algoType, javaType],
 };
