@@ -19,9 +19,12 @@ export const algoType = defineType({
       },
     }),
     defineField({
-      name: "categories",
-      type: "array",
-      of: [defineArrayMember({ type: "reference", to: { type: "category" } })],
+      name: "category",
+      type: "reference",
+      to: { type: "category" },
+      title: "Category",
+      validation: (Rule) =>
+        Rule.required().error("A category must be selected."),
     }),
     {
       name: "lesson",
