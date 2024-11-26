@@ -211,12 +211,12 @@ const myPortableTextComponents = {
   },
   list: {
     bullet: ({ children }: any) => (
-      <ul className="list-disc pl-6 font-custom text-[#212529] text-justify text-xl">
+      <ul className="list-disc pl-6 ml-2 md:ml-6 font-custom text-[#212529] text-justify text-xl">
         {children}
       </ul>
     ),
     number: ({ children }: any) => (
-      <ol className="list-decimal pl-6 font-custom  text-[#212529] text-justify text-xl ">
+      <ol className="list-decimal pl-6 ml-2 md:ml-6 font-custom  text-[#212529] text-justify text-xl ">
         {children}
       </ol>
     ),
