@@ -10,6 +10,10 @@ export async function GET(req: NextRequest, { params }: any) {
     type = "algorithm";
   } else if (courseName === "java") {
     type = "java";
+  } else if (courseName === "javascript-interview-prep") {
+    type = "javascript";
+  } else if (courseName === "react-interview-prep") {
+    type = "react";
   }
 
   const query = `

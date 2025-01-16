@@ -5,7 +5,17 @@ import { categoryType } from "./categoryType";
 import { sysdesignType } from "./sysdesignType";
 import { algoType } from "./algoType";
 import { javaType } from "./javaType";
+import { reactType } from "./reactType";
+import { javascriptType } from "./javascriptType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, categoryType, sysdesignType, algoType, javaType],
+  types: [
+    blockContentType,
+    categoryType,
+    sysdesignType,
+    algoType,
+    javaType,
+    reactType,
+    javascriptType,
+  ],
 };

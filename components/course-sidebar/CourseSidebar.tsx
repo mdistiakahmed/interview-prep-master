@@ -23,6 +23,7 @@ const CourseSidebar = ({ courseName }: any) => {
   useEffect(() => {
     async function loadLessons() {
       const lessonsData = await fetchLessons(courseName);
+      console.log("i am here..", lessonsData);
 
       setLessons(lessonsData); // Use mocked data for testing
     }
