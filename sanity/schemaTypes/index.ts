@@ -7,6 +7,7 @@ import { algoType } from "./algoType";
 import { javaType } from "./javaType";
 import { reactType } from "./reactType";
 import { javascriptType } from "./javascriptType";
+import { behavioralType } from "./behavioralType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -17,5 +18,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     javaType,
     reactType,
     javascriptType,
+    behavioralType,
   ],
 };

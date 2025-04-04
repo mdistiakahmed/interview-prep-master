@@ -36,7 +36,10 @@ const Navbar = () => {
           path: "/courses/javascript-interview-prep",
         },
         { name: "React Interview Prep", path: "/courses/react-interview-prep" },
-        { name: "Behavioural Interview  Prep", path: "/" },
+        {
+          name: "Behavioural Interview  Prep",
+          path: "/courses/behavioural-interview-prep",
+        },
       ],
     },
     {
