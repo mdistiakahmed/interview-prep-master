@@ -14,6 +14,8 @@ export async function GET(req: NextRequest, { params }: any) {
     type = "javascript";
   } else if (courseName === "react-interview-prep") {
     type = "react";
+  } else if (courseName === "behavioral") {
+    type = "behavioral";
   }
 
   const query = `

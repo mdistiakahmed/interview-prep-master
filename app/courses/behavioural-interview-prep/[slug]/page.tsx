@@ -10,7 +10,7 @@ import { Metadata } from "next";
 export async function generateMetadata({
   params,
 }: any): Promise<Metadata | undefined> {
-  const courseName = "java";
+  const courseName = "behavioral";
   const { slug } = params;
   const lesson: any = await fetchPostBySlug(courseName, slug);
 
@@ -22,7 +22,7 @@ export async function generateMetadata({
       description: `${lesson?.excerpt}`,
       type: "article",
       locale: "en_US",
-      url: `https://www.interviewprepmaster.com/courses/java/${slug}`,
+      url: `https://www.interviewprepmaster.com/courses/behavioral/${slug}`,
       siteName: "interviewprepmaster",
       images: [
         {
@@ -37,7 +37,7 @@ export async function generateMetadata({
 }
 
 const LessonPage = async ({ params }: any) => {
-  const courseName = "java";
+  const courseName = "behavioral";
   const { slug } = params;
   const lesson: any = await fetchPostBySlug(courseName, slug);
   return (
