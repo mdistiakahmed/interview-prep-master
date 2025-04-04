@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { client } from "@/sanity/lib/client";
 
 export async function GET(req: NextRequest, { params }: any) {
+  console.log("I am here....");
   const { courseName, slug } = params;
   let type = "";
   if (courseName === "system-design-interview") {
@@ -35,6 +36,8 @@ export async function GET(req: NextRequest, { params }: any) {
       { type, slug },
       { cache: "no-cache" }
     );
+
+    console.log(post);
 
     if (!post) {
       return NextResponse.json({ error: "Post not found" }, { status: 404 });

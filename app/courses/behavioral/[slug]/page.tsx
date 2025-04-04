@@ -39,6 +39,7 @@ export async function generateMetadata({
 const LessonPage = async ({ params }: any) => {
   const courseName = "behavioral";
   const { slug } = params;
+
   const lesson: any = await fetchPostBySlug(courseName, slug);
   return (
     <div className="p-4 ml-auto md:px-16">

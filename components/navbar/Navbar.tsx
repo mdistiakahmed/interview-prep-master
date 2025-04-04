@@ -38,7 +38,7 @@ const Navbar = () => {
         { name: "React Interview Prep", path: "/courses/react-interview-prep" },
         {
           name: "Behavioural Interview  Prep",
-          path: "/courses/behavioural-interview-prep",
+          path: "/courses/behavioral",
         },
       ],
     },
